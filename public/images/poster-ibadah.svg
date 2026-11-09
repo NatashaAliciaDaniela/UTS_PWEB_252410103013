@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title description">
+  <title id="title">Ilustrasi Ibadah Minggu</title>
+  <desc id="description">Poster ilustrasi sederhana untuk jadwal ibadah GPdI Dadapan.</desc>
+  <rect width="640" height="420" fill="#eef2ed"/>
+  <circle cx="500" cy="90" r="115" fill="#e2c47c" opacity=".34"/>
+  <path d="M0 315c105-55 188-60 292-12s212 58 348-14v131H0z" fill="#dbe6dd"/>
+  <path d="M314 104h14v111h-14zM275 145h92v13h-92z" fill="#b08b43"/>
+  <text x="54" y="255" fill="#132c4a" font-family="Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="3">GPdI DADAPAN</text>
+  <text x="52" y="299" fill="#132c4a" font-family="Arial, sans-serif" font-size="36" font-weight="700">IBADAH MINGGU</text>
+  <text x="54" y="336" fill="#536579" font-family="Arial, sans-serif" font-size="18">22 November 2026 · 08.00 WIB</text>
+  <text x="54" y="380" fill="#8a6b2e" font-family="Arial, sans-serif" font-size="14">POSTER ILUSTRASI · INFORMASI SIMULASI</text>
+</svg>

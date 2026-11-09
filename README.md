@@ -1,96 +1,109 @@
-# StudentHub – Student Information Dashboard
+# GPdI Dadapan — Sistem Informasi Gereja
 
-StudentHub adalah aplikasi web simulasi informasi mahasiswa untuk tugas UTS Pemrograman Web. Aplikasi menyediakan login sederhana menggunakan username, dashboard akademik, halaman profil, dan daftar mahasiswa berbasis array PHP.
+Aplikasi web simulasi administrasi GPdI Dadapan untuk tugas UTS Pemrograman Web. Aplikasi menyediakan ringkasan gereja, data jemaat, absensi, pelayanan remaja dan pemuda, kas, persembahan, serta jadwal ibadah.
 
-> Aplikasi ini tidak menyimpan akun atau data mahasiswa. Username diteruskan melalui query parameter, sedangkan daftar mahasiswa disediakan oleh controller. Tidak ada database atau fitur CRUD.
+> Aplikasi tidak memakai database atau autentikasi kompleks. Data tambahan disimpan sementara di file JSON runtime yang berada di luar `public/`, diberi identitas proses server, dan diinisialisasi ulang ketika server dijalankan dengan proses baru. Data kembali ke contoh awal setelah server dihentikan/dijalankan ulang. Penyimpanan ini untuk demonstrasi satu server lokal, bukan untuk data jemaat atau transaksi resmi.
 
 ## Teknologi
 
-- PHP 8.3+ (Laravel 13; versi Laravel yang digunakan membutuhkan PHP 8.3 atau lebih baru)
-- Laravel 13
-- Blade
+- PHP 8.3+ dan Laravel 13
+- Blade, Laravel Routing, dan Controller
 - Bootstrap 5.3 dan Bootstrap Icons melalui CDN
-- CSS3 dan JavaScript bawaan Bootstrap
-- Array PHP sebagai sumber data simulasi
+- CSS, JavaScript, serta array PHP untuk data simulasi
 
-## Struktur utama
+## Struktur fitur
 
 ```text
-app/
-└── Http/Controllers/PageController.php
-public/
-├── css/style.css
-└── images/
-    ├── kampus-universitas-jember.png
-    └── logo-universitas-jember.png
+app/Http/Controllers/PageController.php
+routes/web.php
 resources/views/
+├── layouts/app.blade.php
 ├── components/
 │   ├── brand.blade.php
 │   ├── footer.blade.php
-│   ├── nav-links.blade.php
-│   └── navbar.blade.php
-├── layouts/app.blade.php
+│   ├── group-content.blade.php
+│   ├── navbar.blade.php
+│   └── sidebar.blade.php
 ├── dashboard.blade.php
+├── ibadah.blade.php
+├── jemaat.blade.php
+├── kehadiran.blade.php
+├── kas.blade.php
 ├── login.blade.php
-├── pengelolaan.blade.php
-└── profile.blade.php
-routes/web.php
+├── pemuda.blade.php
+├── persembahan.blade.php
+├── profile.blade.php
+└── remaja.blade.php
+public/
+├── css/style.css
+└── images/
+    ├── logo-gereja.png
+    ├── poster-ibadah.svg
+    └── qris-placeholder.svg
+storage/framework/church-runtime.json   # dibuat saat ada data sementara
+tests/Feature/ChurchManagementTest.php
 ```
 
-## Instalasi dan menjalankan aplikasi
+## Menjalankan aplikasi
 
-Pastikan PHP 8.3+ dan Composer tersedia, lalu dari direktori proyek jalankan:
+Pastikan PHP 8.3+ dan Composer tersedia:
 
 ```bash
 composer install
 php artisan serve
 ```
 
-Buka alamat yang ditampilkan Artisan, biasanya `http://127.0.0.1:8000`. Scaffold Laravel menyertakan `.env`; aplikasi tidak membutuhkan konfigurasi koneksi database atau migrasi. Jika menyiapkan proyek dari awal, buat proyek Laravel 13 terlebih dahulu, lalu salin file aplikasi ini ke direktori tersebut.
+Buka alamat lokal yang ditampilkan Artisan, biasanya `http://127.0.0.1:8000`. Tidak perlu mengatur koneksi atau menjalankan migrasi database.
 
-## Alur aplikasi
+## Alur dan arsitektur MVC
 
-1. Buka `/` dan masukkan username tanpa password.
-2. Form mengirim username menggunakan HTTP POST ke `/login`.
-3. Setelah validasi berhasil, aplikasi mengarahkan pengguna ke `/dashboard?username=Nama`.
-4. Navigasi ke profil dan pengelolaan meneruskan username sebagai query parameter.
-5. Link kembali ke login mengakhiri simulasi dengan kembali ke halaman awal; tidak ada sesi autentikasi pengguna.
+1. Pengurus membuka `/`, memasukkan username, dan mengirim form melalui `POST /login`.
+2. Controller memvalidasi username lalu mengarahkan ke `/dashboard?username=...`.
+3. Setiap tautan fitur meneruskan username melalui query parameter.
+4. `PageController` menyiapkan data array dan statistik untuk view.
+5. View Blade menggunakan layout, komponen navigasi, dan perulangan untuk merender data.
 
-## Arsitektur MVC
+Data contoh, saldo, tanggal, dan kehadiran disiapkan untuk demonstrasi. Form jemaat, absensi, kas, persembahan, dan jadwal menerima input melalui POST, memvalidasinya di controller, lalu menambahkan data pada penyimpanan sementara yang terkait proses server. Perubahan terlihat pada halaman terkait selama server yang sama berjalan dan dihapus secara logis saat proses baru memulai aplikasi. Tidak ada SQL database maupun Eloquent. QRIS merupakan placeholder yang tidak dapat dipakai untuk pembayaran; poster merupakan ilustrasi informasi simulasi.
 
-- **Model/data:** array mahasiswa disiapkan di `PageController`, tanpa database maupun Eloquent.
-- **View:** file Blade di `resources/views` menggunakan layout bersama, komponen navbar/footer, dan data dari controller.
-- **Controller:** `PageController` memvalidasi username, menyiapkan statistik dan data, serta memilih view.
-- **Routing:** seluruh halaman dan pemrosesan form terdaftar di `routes/web.php` dan diarahkan ke controller.
+## Halaman
+
+| Route | Kegunaan |
+|---|---|
+| `/` | Login simulasi |
+| `/dashboard?username=Nama` | Ringkasan gereja dan kegiatan |
+| `/jemaat?username=Nama` | Daftar, pencarian, dan filter jemaat |
+| `/kehadiran?username=Nama` | Rekap dan simulasi status hadir |
+| `/remaja?username=Nama` | Anggota dan kas remaja |
+| `/pemuda?username=Nama` | Anggota dan kas pemuda |
+| `/kas?username=Nama` | Rekap kas gereja |
+| `/persembahan?username=Nama` | Catatan persembahan |
+| `/ibadah?username=Nama` | Jadwal dan poster ilustrasi |
+| `/profile?username=Nama` | Informasi username pengurus |
 
 ## Screenshot
 
-Simpan hasil tangkapan layar aplikasi di `docs/screenshots/` dengan nama berikut:
-
-| Halaman | File screenshot |
-|---|---|
-| Login | `docs/screenshots/login.png` |
-| Dashboard | `docs/screenshots/dashboard.png` |
-| Profil | `docs/screenshots/profile.png` |
-| Pengelolaan mahasiswa | `docs/screenshots/pengelolaan.png` |
-
-Setelah file screenshot ditambahkan, tampilkan di bagian ini dengan:
+Tempatkan screenshot aplikasi di `docs/screenshots/` bila tersedia:
 
 ```markdown
-![Halaman login](docs/screenshots/login.png)
+![Login](docs/screenshots/login.png)
 ![Dashboard](docs/screenshots/dashboard.png)
-![Profil](docs/screenshots/profile.png)
-![Pengelolaan mahasiswa](docs/screenshots/pengelolaan.png)
+![Data Jemaat](docs/screenshots/jemaat.png)
+![Kehadiran](docs/screenshots/kehadiran.png)
+![Remaja](docs/screenshots/remaja.png)
+![Pemuda](docs/screenshots/pemuda.png)
+![Kas](docs/screenshots/kas.png)
+![Persembahan](docs/screenshots/persembahan.png)
+![Informasi Ibadah](docs/screenshots/ibadah.png)
 ```
 
-## Checklist pengujian UTS
+## Checklist pengujian
 
-- [ ] `GET /` menampilkan form login dan menolak username kosong.
-- [ ] `POST /login` mengarahkan username valid ke dashboard melalui query parameter.
-- [ ] Dashboard menampilkan sapaan, statistik controller, dan tabel mahasiswa terbaru.
-- [ ] Profil menunjukkan username yang sama dari query parameter.
-- [ ] Pengelolaan menampilkan sedikitnya delapan baris data dari array dengan Blade `@foreach`.
-- [ ] Link navigasi mempertahankan username dan link keluar kembali ke halaman login.
-- [ ] Tabel menggunakan `table-responsive`, dan navbar dapat dibuka pada layar kecil.
-- [ ] `php artisan route:list` menampilkan lima route aplikasi.
-- [ ] Tidak ada database, Eloquent, starter kit, atau operasi CRUD aplikasi.
+- [ ] Login memvalidasi username dan meneruskannya melalui query parameter.
+- [ ] Semua fitur dirender melalui route dan `PageController`.
+- [ ] Daftar jemaat, kehadiran, kas, persembahan, dan jadwal berasal dari array controller.
+- [ ] Navigasi sidebar aktif dan tetap meneruskan username.
+- [ ] Penambahan jemaat, absensi, kas, persembahan, dan jadwal terlihat saat halaman dibuka kembali.
+- [ ] Data runtime kembali ke contoh awal setelah server dimulai ulang.
+- [ ] Tabel responsif dan layout dapat digunakan pada layar kecil.
+- [ ] QRIS ditandai jelas sebagai placeholder; form tidak mengklaim menyimpan data.
+- [ ] `php artisan test` lulus.
