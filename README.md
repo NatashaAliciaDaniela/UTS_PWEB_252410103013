@@ -82,7 +82,20 @@ Data contoh, saldo, tanggal, dan kehadiran disiapkan untuk demonstrasi. Form jem
 
 ## Screenshot
 
-<img width="1920" height="1080" alt="Screenshot 2026-11-10 080530" src="https://github.com/user-attachments/assets/5cb5a749-1985-4f62-9987-7b34761b1cb1" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080409" src="https://github.com/user-attachments/assets/c3ebcdf4-5069-418f-a49b-528facbd78d5" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080422" src="https://github.com/user-attachments/assets/ed4c94db-deb1-4355-815a-789450388079" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080429" src="https://github.com/user-attachments/assets/f26c4dc9-67b6-4f52-a157-7bdc6d1e2d07" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080434" src="https://github.com/user-attachments/assets/0f839c16-2255-40ee-a7b9-759c1ac7070c" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080434" src="https://github.com/user-attachments/assets/d03bc91d-6f09-48ac-bf47-a3e46f0a8900" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080449" src="https://github.com/user-attachments/assets/9652c534-34c4-4eac-b5a3-7799b68b1c14" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080455" src="https://github.com/user-attachments/assets/ca1fbcbd-c1ed-4609-9cf3-eec206d30834" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080501" src="https://github.com/user-attachments/assets/a5b9e0e3-1a92-4431-a5b6-bb3258d36a53" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080506" src="https://github.com/user-attachments/assets/8d64adbb-d922-4d41-b8f0-cad2aa732fc9" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080514" src="https://github.com/user-attachments/assets/992c36ad-ba98-4546-9e99-96baa287c32c" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080519" src="https://github.com/user-attachments/assets/4b08c23e-fbce-4f5f-ac08-66fd36ef9cf1" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080525" src="https://github.com/user-attachments/assets/7cdd1c61-48ba-4b74-abe3-ec48b4909024" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080530" src="https://github.com/user-attachments/assets/e3ee396a-1af7-41e4-a8ef-b1470f79d264" />
+
 
 
 ## Checklist pengujian
