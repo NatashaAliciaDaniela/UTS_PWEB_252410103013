@@ -82,19 +82,8 @@ Data contoh, saldo, tanggal, dan kehadiran disiapkan untuk demonstrasi. Form jem
 
 ## Screenshot
 
-Tempatkan screenshot aplikasi di `docs/screenshots/` bila tersedia:
+<img width="1920" height="1080" alt="Screenshot 2026-11-10 080530" src="https://github.com/user-attachments/assets/5cb5a749-1985-4f62-9987-7b34761b1cb1" />
 
-```markdown
-![Login](docs/screenshots/login.png)
-![Dashboard](docs/screenshots/dashboard.png)
-![Data Jemaat](docs/screenshots/jemaat.png)
-![Kehadiran](docs/screenshots/kehadiran.png)
-![Remaja](docs/screenshots/remaja.png)
-![Pemuda](docs/screenshots/pemuda.png)
-![Kas](docs/screenshots/kas.png)
-![Persembahan](docs/screenshots/persembahan.png)
-![Informasi Ibadah](docs/screenshots/ibadah.png)
-```
 
 ## Checklist pengujian
 
