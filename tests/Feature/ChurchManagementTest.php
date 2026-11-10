@@ -60,6 +60,21 @@ class ChurchManagementTest extends TestCase
         }
     }
 
+    public function test_worship_information_page_displays_the_service_poster_and_details(): void
+    {
+        $this->get('/ibadah?username=Rio')
+            ->assertOk()
+            ->assertSee('banner-ibadah-november-2026.jpeg')
+            ->assertSee('Sunday Service')
+            ->assertSee('01 November 2026')
+            ->assertSee('07.00 WIB')
+            ->assertSee('Sebuah Tanggung Jawab')
+            ->assertSee('Pdm. Yohanes Setiawan')
+            ->assertSee('Elita Wisma')
+            ->assertSee('GPdI “Yesus Segalanya”')
+            ->assertSee('@gpdidadapan');
+    }
+
     public function test_member_and_attendance_lists_are_rendered_from_controller_data(): void
     {
         $this->get('/jemaat?username=Rio')
